@@ -1,8 +1,8 @@
+import 'package:app/screens/final_page.dart';
 import 'package:app/widgets/sized_box.dart';
 import 'package:app/widgets/table.dart';
 import 'package:app/widgets/text_field.dart';
 import 'package:flutter/material.dart';
-
 import '../utils/controllers.dart';
 
 class MyHome extends StatelessWidget {
@@ -64,6 +64,29 @@ class MyHome extends StatelessWidget {
                 textField(refCode, "Reference Code", TextInputType.text),
                 addVerticalSpace(10),
                 const MyTable(),
+                addVerticalSpace(10),
+                Center(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => FinalPage(
+                                name: name.text,
+                                date: date.text,
+                                address: address.text,
+                                mob: mobile.text,
+                                planTime: planTime.text,
+                                reciptNo: reciptNo.text,
+                                refCode: refCode.text,
+                                seatNo: seatNo.text,
+                                regFee: regFee.text,
+                                bookDeposit: bookDeposit.text,
+                                lockerDeposit: lockerDeposit.text,
+                                lockerFee: lockerFee.text,
+                                libFee: libFee.text,
+                                totalPayment: totalPayment.text)));
+                      },
+                      child: const Text("Create Receipt")),
+                )
               ],
             ),
           ),

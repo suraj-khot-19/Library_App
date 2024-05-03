@@ -11,9 +11,7 @@ TextEditingController refCode = TextEditingController();
 
 //for table
 TextEditingController regFee = TextEditingController();
-TextEditingController bookFee = TextEditingController();
 TextEditingController bookDeposit = TextEditingController();
-TextEditingController otherFee = TextEditingController();
 TextEditingController lockerDeposit = TextEditingController();
 TextEditingController lockerFee = TextEditingController();
 TextEditingController libFee = TextEditingController();
