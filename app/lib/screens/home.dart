@@ -1,9 +1,11 @@
 import 'package:app/screens/final_page.dart';
+import 'package:app/widgets/drop_down.dart';
 import 'package:app/widgets/sized_box.dart';
 import 'package:app/widgets/table.dart';
 import 'package:app/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import '../utils/controllers.dart';
+import '../widgets/date_picker.dart';
 
 class MyHome extends StatelessWidget {
   const MyHome({super.key});
@@ -34,8 +36,7 @@ class MyHome extends StatelessWidget {
                 addVerticalSpace(25),
                 Row(
                   children: [
-                    Expanded(
-                        child: textField(date, "Date", TextInputType.datetime)),
+                    const PickDate(),
                     addHorizontalSpace(20),
                     Expanded(
                         child: textField(
@@ -49,9 +50,10 @@ class MyHome extends StatelessWidget {
                         child:
                             textField(seatNo, "Seat No", TextInputType.text)),
                     addHorizontalSpace(20),
-                    Expanded(
-                        child: textField(
-                            planTime, "Plan & Time", TextInputType.text)),
+                    const Expanded(
+                        // child: textField(
+                        //     planTime, "Plan & Time", TextInputType.text)),
+                        child: DropMenue()),
                   ],
                 ),
                 addVerticalSpace(10),
