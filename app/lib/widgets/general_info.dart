@@ -91,23 +91,3 @@ class Info extends StatelessWidget {
     );
   }
 }
-
-// Row(
-          //   children: [
-          //     const Text("Date"),
-          //     Text(date.text),
-          //     addHorizontalSpace(5),
-          //     const Text("Receipt No"),
-          //     Text(reciptNo.text),
-          //   ],
-          // ),
-          // addVerticalSpace(10),
-          // Row(
-          //   children: [
-          //     const Text("Seat No"),
-          //     Text(seatNo.text),
-          //     addHorizontalSpace(5),
-          //     const Text("Plan & Time"),
-          //     Text(planTime.text),
-          //   ],
-          // ),
