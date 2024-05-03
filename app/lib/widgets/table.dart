@@ -1,6 +1,7 @@
 import 'package:app/utils/controllers.dart';
 import 'package:app/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MyTable extends StatelessWidget {
   const MyTable({super.key});
@@ -16,6 +17,7 @@ class MyTable extends StatelessWidget {
       ),
       width: double.infinity,
       child: DataTable(
+        // columnSpacing: 5,
         columns: const <DataColumn>[
           DataColumn(
             label: Text('Particulars'),
@@ -27,9 +29,9 @@ class MyTable extends StatelessWidget {
         rows: <DataRow>[
           DataRow(
             cells: <DataCell>[
-              const DataCell(Text('Registration Fee')),
+              const DataCell(Text('Registration Fee*')),
               DataCell(
-                textField(regFee, "", TextInputType.number),
+                textField(regFee, "", TextInputType.number, true),
               ),
             ],
           ),
@@ -37,7 +39,7 @@ class MyTable extends StatelessWidget {
             cells: <DataCell>[
               const DataCell(Text('Book Deposit')),
               DataCell(
-                textField(bookDeposit, "", TextInputType.number),
+                textField(bookDeposit, "", TextInputType.number, false),
               ),
             ],
           ),
@@ -45,15 +47,15 @@ class MyTable extends StatelessWidget {
             cells: <DataCell>[
               const DataCell(Text('Locker Deposit')),
               DataCell(
-                textField(lockerDeposit, "", TextInputType.number),
+                textField(lockerDeposit, "", TextInputType.number, false),
               ),
             ],
           ),
           DataRow(
             cells: <DataCell>[
-              const DataCell(Text('Library Fee')),
+              const DataCell(Text('Library Fee*')),
               DataCell(
-                textField(libFee, "", TextInputType.number),
+                textField(libFee, "", TextInputType.number, true),
               ),
             ],
           ),
@@ -61,15 +63,15 @@ class MyTable extends StatelessWidget {
             cells: <DataCell>[
               const DataCell(Text('Locker Fee')),
               DataCell(
-                textField(lockerFee, "", TextInputType.number),
+                textField(lockerFee, "", TextInputType.number, false),
               ),
             ],
           ),
           DataRow(
             cells: <DataCell>[
-              const DataCell(Text('Total Payment Received')),
+              const DataCell(Text('Total Payment Received*')),
               DataCell(
-                textField(totalPayment, "", TextInputType.number),
+                textField(totalPayment, "", TextInputType.number, true),
               ),
             ],
           ),

@@ -31,13 +31,19 @@ class _PickDateState extends State<PickDate> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: TextField(
+      child: TextFormField(
         controller: date,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),
-          labelText: "Date",
+          labelText: "Date *",
           prefixIcon: Icon(Icons.calendar_today),
         ),
+        validator: (value) {
+          if ((value == null || value.isEmpty)) {
+            return 'Please enter Date';
+          }
+          return null;
+        },
         onTap: () {
           pickDate();
         },
