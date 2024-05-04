@@ -1,30 +1,27 @@
 import 'package:app/utils/controllers.dart';
 import 'package:app/widgets/text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class MyTable extends StatelessWidget {
-  const MyTable({super.key});
+class MyTable extends StatefulWidget {
+  const MyTable({Key? key});
 
   @override
+  State<MyTable> createState() => _MyTableState();
+}
+
+class _MyTableState extends State<MyTable> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black, // Border color
-          width: 1.0, // Border width
-        ),
-      ),
-      width: double.infinity,
+    return Flexible(
+      flex: 0,
+      fit: FlexFit.loose,
       child: DataTable(
-        // columnSpacing: 5,
         columns: const <DataColumn>[
           DataColumn(
             label: Text('Particulars'),
+            numeric: false,
           ),
-          DataColumn(
-            label: Text('Amount(₹)'),
-          ),
+          DataColumn(label: Text('Amount(₹)'), numeric: true),
         ],
         rows: <DataRow>[
           DataRow(
@@ -39,7 +36,11 @@ class MyTable extends StatelessWidget {
             cells: <DataCell>[
               const DataCell(Text('Book Deposit')),
               DataCell(
-                textField(bookDeposit, "", TextInputType.number, false),
+                SizedBox(
+                  width: double.infinity,
+                  child:
+                      textField(bookDeposit, "", TextInputType.number, false),
+                ),
               ),
             ],
           ),
@@ -71,7 +72,7 @@ class MyTable extends StatelessWidget {
             cells: <DataCell>[
               const DataCell(Text('Total Payment Received*')),
               DataCell(
-                textField(totalPayment, "", TextInputType.number, true),
+                textField(totalPayment, "", TextInputType.number, false),
               ),
             ],
           ),

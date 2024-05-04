@@ -36,7 +36,7 @@ class _MyHomeState extends State<MyHome> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16),
             child: Form(
               //form key
               key: _formKey,

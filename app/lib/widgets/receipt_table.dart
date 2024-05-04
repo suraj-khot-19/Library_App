@@ -1,4 +1,5 @@
 import 'package:app/utils/controllers.dart';
+import 'package:app/utils/receipt_text_style.dart';
 import 'package:flutter/material.dart';
 
 class ReceiptTable extends StatelessWidget {
@@ -12,60 +13,60 @@ class ReceiptTable extends StatelessWidget {
         decoration: BoxDecoration(border: Border.all()),
         width: double.infinity,
         child: DataTable(
-          columns: const <DataColumn>[
+          columns: <DataColumn>[
             DataColumn(
-              label: Text('Particulars'),
+              label: recriptText("Particulars"),
             ),
             DataColumn(
-              label: Text('Amount(₹)'),
+              label: recriptText('Amount(₹)'),
             ),
           ],
           rows: <DataRow>[
             DataRow(
               cells: <DataCell>[
-                const DataCell(Text('Registration Fee')),
+                DataCell(recriptText('Registration Fee')),
                 DataCell(
-                  Text(regFee.text),
+                  recriptText(regFee.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                const DataCell(Text('Book Deposit')),
+                DataCell(recriptText('Book Deposit')),
                 DataCell(
-                  Text(bookDeposit.text),
+                  recriptText(bookDeposit.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                const DataCell(Text('Locker Deposit')),
+                DataCell(recriptText('Locker Deposit')),
                 DataCell(
-                  Text(lockerDeposit.text),
+                  recriptText(lockerDeposit.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                const DataCell(Text('Library Fee')),
+                DataCell(recriptText('Library Fee')),
                 DataCell(
-                  Text(libFee.text),
+                  recriptText(libFee.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                const DataCell(Text('Locker Fee')),
+                DataCell(recriptText('Locker Fee')),
                 DataCell(
-                  Text(lockerFee.text),
+                  recriptText(lockerFee.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                const DataCell(Text('Total Payment Received')),
+                DataCell(recriptText('Total Payment Received')),
                 DataCell(
-                  Text(totalPayment.text),
+                  recriptText(totalPayment.text),
                 ),
               ],
             ),

@@ -1,3 +1,4 @@
+import 'package:app/utils/receipt_text_style.dart';
 import 'package:app/widgets/my_container.dart';
 import 'package:app/widgets/sized_box.dart';
 import 'package:flutter/material.dart';
@@ -16,30 +17,26 @@ class Info extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Text("Date"),
+                  recriptText("Date"),
                   addHorizontalSpace(5),
-                  containerWithBorder(
-                    Text(date.text),
-                  ),
+                  containerWithBorder(date.text),
                   addHorizontalSpace(5),
-                  const Text("Receipt No"),
+                  recriptText("Receipt No"),
                   addHorizontalSpace(5),
-                  containerWithBorder(
-                    Text(reciptNo.text),
-                  ),
+                  containerWithBorder(reciptNo.text),
                 ],
               ),
               addVerticalSpace(10),
               Row(
                 children: [
-                  const Text("Seat No"),
+                  recriptText("Seat No"),
                   addHorizontalSpace(5),
-                  containerWithBorder(Text(seatNo.text)),
+                  containerWithBorder(seatNo.text),
                   addHorizontalSpace(5),
-                  const Text("Plan & Time"),
+                  recriptText("Plan & Time"),
                   addHorizontalSpace(5),
                   containerWithBorder(
-                    Text(planTime.text),
+                    planTime.text,
                   ),
                 ],
               ),
@@ -48,41 +45,35 @@ class Info extends StatelessWidget {
           addVerticalSpace(10),
           Row(
             children: [
-              const Text("Name"),
+              recriptText("Name"),
               addHorizontalSpace(5),
               containerWithBorder(
-                Text(name.text),
+                name.text,
               ),
             ],
           ),
           addVerticalSpace(10),
           Row(
             children: [
-              const Text("Address"),
+              recriptText("Address"),
               addHorizontalSpace(5),
-              containerWithBorder(
-                Text(address.text),
-              ),
+              containerWithBorder(address.text),
             ],
           ),
           addVerticalSpace(10),
           Row(
             children: [
-              const Text("Mob No"),
+              recriptText("Mob No"),
               addHorizontalSpace(5),
-              containerWithBorder(
-                Text(mobile.text),
-              ),
+              containerWithBorder(mobile.text),
             ],
           ),
           addVerticalSpace(10),
           Row(
             children: [
-              const Text("Reference Code"),
+              recriptText("Reference Code"),
               addHorizontalSpace(5),
-              containerWithBorder(
-                Text(refCode.text),
-              ),
+              containerWithBorder(refCode.text),
             ],
           ),
           addVerticalSpace(10),

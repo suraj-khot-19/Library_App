@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
-Widget containerWithBorder(Text text) {
+Widget containerWithBorder(String title) {
   return Expanded(
     child: Container(
+      height: 50,
       decoration: BoxDecoration(border: Border.all()),
-      child: Padding(
-        padding: const EdgeInsets.all(2),
-        child: text,
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 16),
+        ),
       ),
     ),
   );
