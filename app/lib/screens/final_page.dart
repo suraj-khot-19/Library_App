@@ -1,9 +1,10 @@
 import 'package:app/widgets/general_info.dart';
 import 'package:app/widgets/receipt_table.dart';
 import 'package:flutter/material.dart';
+import '../utils/pdf_api.dart';
 import '../widgets/sized_box.dart';
 
-class FinalPage extends StatelessWidget {
+class FinalPage extends StatefulWidget {
   final String date,
       reciptNo,
       seatNo,
@@ -36,6 +37,11 @@ class FinalPage extends StatelessWidget {
       super.key});
 
   @override
+  State<FinalPage> createState() => _FinalPageState();
+}
+
+class _FinalPageState extends State<FinalPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -52,14 +58,22 @@ class FinalPage extends StatelessWidget {
           ],
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Info(),
-              ReceiptTable(),
+              const Info(),
+              const ReceiptTable(),
+              ElevatedButton(
+                  onPressed: () async {
+                    final pdfFile = await PdfApi.generatePdf();
+                    print("clicked");
+
+                    PdfApi.openFile(pdfFile);
+                  },
+                  child: const Text("Conform Receipt"))
             ],
           ),
         ),

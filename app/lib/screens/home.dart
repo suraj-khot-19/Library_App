@@ -82,7 +82,8 @@ class _MyHomeState extends State<MyHome> {
                   Center(
                     child: ElevatedButton(
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
+                          // if (_formKey.currentState!.validate()) {
+                          {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => FinalPage(
                                     name: name.text,
