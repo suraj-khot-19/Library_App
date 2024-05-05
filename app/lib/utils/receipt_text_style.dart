@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget recriptText(String title) {
+Widget receiptText(String title) {
   return Text(
     title,
     style: const TextStyle(fontSize: 16),

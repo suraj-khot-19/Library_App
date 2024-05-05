@@ -21,59 +21,59 @@ class _ReceiptTableState extends State<ReceiptTable> {
         child: DataTable(
           columns: <DataColumn>[
             DataColumn(
-              label: recriptText("Particulars"),
+              label: receiptText("Particulars"),
             ),
             DataColumn(
-              label: recriptText('Amount(₹)'),
+              label: receiptText('Amount(₹)'),
             ),
           ],
           rows: <DataRow>[
             DataRow(
               cells: <DataCell>[
-                DataCell(recriptText('Registration Fee')),
+                DataCell(receiptText('Registration Fee')),
                 DataCell(
-                  recriptText(regFee.text),
+                  receiptText(regFee.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                DataCell(recriptText('Book Deposit')),
+                DataCell(receiptText('Book Deposit')),
                 DataCell(
-                  recriptText(bookDeposit.text),
+                  receiptText(bookDeposit.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                DataCell(recriptText('Locker Deposit')),
+                DataCell(receiptText('Locker Deposit')),
                 DataCell(
-                  recriptText(lockerDeposit.text),
+                  receiptText(lockerDeposit.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                DataCell(recriptText('Library Fee')),
+                DataCell(receiptText('Library Fee')),
                 DataCell(
-                  recriptText(libFee.text),
+                  receiptText(libFee.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                DataCell(recriptText('Locker Fee')),
+                DataCell(receiptText('Locker Fee')),
                 DataCell(
-                  recriptText(lockerFee.text),
+                  receiptText(lockerFee.text),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                DataCell(recriptText('Total Payment Received')),
+                DataCell(receiptText('Total Payment Received')),
                 DataCell(
-                  // recriptText(totalPayment.text),
-                  recriptText(widget.totalPayment.toString()),
+                  // receiptText(totalPayment.text),
+                  receiptText(widget.totalPayment.toString()),
                 ),
               ],
             ),

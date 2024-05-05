@@ -17,11 +17,11 @@ class Info extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  recriptText("Date"),
+                  receiptText("Date"),
                   addHorizontalSpace(5),
                   containerWithBorder(date.text),
                   addHorizontalSpace(5),
-                  recriptText("Receipt No"),
+                  receiptText("Receipt No"),
                   addHorizontalSpace(5),
                   containerWithBorder(reciptNo.text),
                 ],
@@ -29,11 +29,11 @@ class Info extends StatelessWidget {
               addVerticalSpace(10),
               Row(
                 children: [
-                  recriptText("Seat No"),
+                  receiptText("Seat No"),
                   addHorizontalSpace(5),
                   containerWithBorder(seatNo.text),
                   addHorizontalSpace(5),
-                  recriptText("Plan & Time"),
+                  receiptText("Plan & Time"),
                   addHorizontalSpace(5),
                   containerWithBorder(
                     planTime.text,
@@ -45,7 +45,7 @@ class Info extends StatelessWidget {
           addVerticalSpace(10),
           Row(
             children: [
-              recriptText("Name"),
+              receiptText("Name"),
               addHorizontalSpace(5),
               containerWithBorder(
                 name.text,
@@ -55,7 +55,7 @@ class Info extends StatelessWidget {
           addVerticalSpace(10),
           Row(
             children: [
-              recriptText("Address"),
+              receiptText("Address"),
               addHorizontalSpace(5),
               containerWithBorder(address.text),
             ],
@@ -63,7 +63,7 @@ class Info extends StatelessWidget {
           addVerticalSpace(10),
           Row(
             children: [
-              recriptText("Mob No"),
+              receiptText("Mob No"),
               addHorizontalSpace(5),
               containerWithBorder(mobile.text),
             ],
@@ -71,7 +71,7 @@ class Info extends StatelessWidget {
           addVerticalSpace(10),
           Row(
             children: [
-              recriptText("Reference Code"),
+              receiptText("Reference Code"),
               addHorizontalSpace(5),
               containerWithBorder(refCode.text),
             ],

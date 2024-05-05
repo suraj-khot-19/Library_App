@@ -1,4 +1,5 @@
 import 'package:app/utils/controllers.dart';
+import 'package:app/widgets/sized_box.dart';
 import 'package:app/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -19,72 +20,159 @@ class _MyTableState extends State<MyTable> {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 0,
-      fit: FlexFit.loose,
-      child: DataTable(
-        columns: const <DataColumn>[
-          DataColumn(
-            label: Text('Particulars'),
-            numeric: false,
-          ),
-          DataColumn(label: Text('Amount(₹)'), numeric: true),
-        ],
-        rows: <DataRow>[
-          DataRow(
-            cells: <DataCell>[
-              const DataCell(Text('Registration Fee*')),
-              DataCell(
-                textField(regFee, "", TextInputType.number, true),
-              ),
-            ],
-          ),
-          DataRow(
-            cells: <DataCell>[
-              const DataCell(Text('Book Deposit')),
-              DataCell(
-                SizedBox(
-                  width: double.infinity,
-                  child:
-                      textField(bookDeposit, "", TextInputType.number, false),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 4,
+                child: Text(
+                  'Particulars',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
               ),
+              Spacer(),
+              Expanded(
+                flex: 5,
+                child: Text('Amount(₹)',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              )
             ],
           ),
-          DataRow(
-            cells: <DataCell>[
-              const DataCell(Text('Locker Deposit')),
-              DataCell(
-                textField(lockerDeposit, "", TextInputType.number, false),
+          const Divider(
+            thickness: 1,
+            color: Colors.black,
+          ),
+          Row(
+            children: [
+              const Expanded(
+                flex: 5,
+                child: Text(
+                  'Registration Fee*',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 6,
+                child: textField(
+                    regFee, "Registration Fee*", TextInputType.number, true),
               ),
             ],
           ),
-          DataRow(
-            cells: <DataCell>[
-              const DataCell(Text('Library Fee*')),
-              DataCell(
-                textField(libFee, "", TextInputType.number, true),
+          const Divider(
+            thickness: 1,
+            color: Colors.black,
+          ),
+          Row(
+            children: [
+              const Expanded(
+                flex: 5,
+                child: Text(
+                  'Book Deposit',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 6,
+                child: textField(
+                    bookDeposit, "Book Deposit", TextInputType.number, false),
               ),
             ],
           ),
-          DataRow(
-            cells: <DataCell>[
-              const DataCell(Text('Locker Fee')),
-              DataCell(
-                textField(lockerFee, "", TextInputType.number, false),
+          const Divider(
+            thickness: 1,
+            color: Colors.black,
+          ),
+          Row(
+            children: [
+              const Expanded(
+                flex: 5,
+                child: Text(
+                  'Locker Deposit',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 6,
+                child: textField(
+                    lockerFee, "Locker Deposit", TextInputType.number, false),
               ),
             ],
           ),
-          DataRow(
-            cells: <DataCell>[
-              const DataCell(Text('Total Payment Received')),
-              DataCell(Align(
-                alignment: Alignment.center,
+          const Divider(
+            thickness: 1,
+            color: Colors.black,
+          ),
+          Row(
+            children: [
+              const Expanded(
+                flex: 5,
+                child: Text(
+                  'Library Fee',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 6,
+                child: textField(
+                    libFee, "Library Fee*", TextInputType.number, true),
+              ),
+            ],
+          ),
+          const Divider(
+            thickness: 1,
+            color: Colors.black,
+          ),
+          Row(
+            children: [
+              const Expanded(
+                flex: 5,
+                child: Text(
+                  'Locker Fee',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 6,
+                child: textField(
+                    lockerFee, "Locker Fee", TextInputType.number, false),
+              ),
+            ],
+          ),
+          const Divider(
+            thickness: 1,
+            color: Colors.black,
+          ),
+          Row(
+            children: [
+              const Expanded(
+                flex: 5,
+                child: Text(
+                  'Total Payment Received',
+                  style: TextStyle(fontSize: 17),
+                ),
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 4,
                 child: Text(
                   totalPay.toString(),
-                  style: const TextStyle(fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w500),
                 ),
-              )),
+              ),
             ],
           ),
         ],
