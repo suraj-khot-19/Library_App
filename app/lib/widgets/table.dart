@@ -10,6 +10,8 @@ class MyTable extends StatefulWidget {
 }
 
 class _MyTableState extends State<MyTable> {
+  double totalPay = 0.0;
+
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -70,14 +72,57 @@ class _MyTableState extends State<MyTable> {
           ),
           DataRow(
             cells: <DataCell>[
-              const DataCell(Text('Total Payment Received*')),
-              DataCell(
-                textField(totalPayment, "", TextInputType.number, false),
-              ),
+              const DataCell(Text('Total Payment Received')),
+              DataCell(Align(
+                alignment: Alignment.center,
+                child: Text(
+                  totalPay.toString(),
+                  style: const TextStyle(fontWeight: FontWeight.w500),
+                ),
+              )),
             ],
           ),
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Add listeners to your controllers
+    regFee.addListener(_updateTotalPay);
+    bookDeposit.addListener(_updateTotalPay);
+    lockerDeposit.addListener(_updateTotalPay);
+    libFee.addListener(_updateTotalPay);
+    lockerFee.addListener(_updateTotalPay);
+  }
+
+  @override
+  void dispose() {
+    // Clean up controllers
+    regFee.dispose();
+    bookDeposit.dispose();
+    lockerDeposit.dispose();
+    libFee.dispose();
+    lockerFee.dispose();
+    super.dispose();
+  }
+
+  void _updateTotalPay() {
+    setState(() {
+      double regFeeValue = double.tryParse(regFee.text.trim()) ?? 0.0;
+      double bookDepositValue = double.tryParse(bookDeposit.text.trim()) ?? 0.0;
+      double lockerDepositValue =
+          double.tryParse(lockerDeposit.text.trim()) ?? 0.0;
+      double libFeeValue = double.tryParse(libFee.text.trim()) ?? 0.0;
+      double lockerFeeValue = double.tryParse(lockerFee.text.trim()) ?? 0.0;
+
+      totalPay = regFeeValue +
+          bookDepositValue +
+          lockerDepositValue +
+          libFeeValue +
+          lockerFeeValue;
+    });
   }
 }

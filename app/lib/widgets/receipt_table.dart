@@ -66,7 +66,7 @@ class ReceiptTable extends StatelessWidget {
               cells: <DataCell>[
                 DataCell(recriptText('Total Payment Received')),
                 DataCell(
-                  recriptText(totalPayment.text),
+                  recriptText("20"),
                 ),
               ],
             ),

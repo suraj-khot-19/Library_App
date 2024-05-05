@@ -69,11 +69,9 @@ class _FinalPageState extends State<FinalPage> {
               ElevatedButton(
                   onPressed: () async {
                     final pdfFile = await PdfApi.generatePdf();
-                    print("clicked");
-
                     PdfApi.openFile(pdfFile);
                   },
-                  child: const Text("Conform Receipt"))
+                  child: const Text("Print Recipt"))
             ],
           ),
         ),

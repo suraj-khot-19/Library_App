@@ -18,6 +18,7 @@ Widget textField(TextEditingController controller, String label,
         }
         return null;
       },
+      maxLines: 1, // Added this line
     ),
   );
 }
