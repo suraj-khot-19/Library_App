@@ -15,4 +15,3 @@ TextEditingController bookDeposit = TextEditingController();
 TextEditingController lockerDeposit = TextEditingController();
 TextEditingController lockerFee = TextEditingController();
 TextEditingController libFee = TextEditingController();
-TextEditingController totalPayment = TextEditingController();

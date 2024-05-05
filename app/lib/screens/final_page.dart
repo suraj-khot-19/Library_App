@@ -43,6 +43,8 @@ class FinalPage extends StatefulWidget {
 class _FinalPageState extends State<FinalPage> {
   @override
   Widget build(BuildContext context) {
+    final double totalPaymentValue = double.parse(widget.totalPayment);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -65,10 +67,12 @@ class _FinalPageState extends State<FinalPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Info(),
-              const ReceiptTable(),
+              ReceiptTable(
+                  totalPayment: totalPaymentValue), // Pass totalPayment here
               ElevatedButton(
                   onPressed: () async {
-                    final pdfFile = await PdfApi.generatePdf();
+                    final pdfFile =
+                        await PdfApi.generatePdf(widget.totalPayment);
                     PdfApi.openFile(pdfFile);
                   },
                   child: const Text("Print Recipt"))

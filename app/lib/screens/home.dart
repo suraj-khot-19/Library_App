@@ -15,6 +15,12 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+  double totalPay = 0.0;
+
+  double getTotalPay() {
+    return totalPay;
+  }
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -73,32 +79,40 @@ class _MyHomeState extends State<MyHome> {
                   addVerticalSpace(10),
                   mobileTextField(
                       mobile, "Mob No*", TextInputType.number, true, 10),
-                  addVerticalSpace(10),
+                  addVerticalSpace(0.1),
                   textField(
                       refCode, "Reference Code", TextInputType.text, false),
                   addVerticalSpace(10),
-                  const MyTable(),
+                  MyTable(
+                    onTotalPayChanged: (totalPay) {
+                      setState(() {
+                        this.totalPay = totalPay;
+                      });
+                    },
+                  ),
                   addVerticalSpace(10),
                   Center(
                     child: ElevatedButton(
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
+                          // if (_formKey.currentState!.validate())
+                          {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => FinalPage(
-                                    name: name.text,
-                                    date: date.text,
-                                    address: address.text,
-                                    mob: mobile.text,
-                                    planTime: planTime.text,
-                                    reciptNo: reciptNo.text,
-                                    refCode: refCode.text,
-                                    seatNo: seatNo.text,
-                                    regFee: regFee.text,
-                                    bookDeposit: bookDeposit.text,
-                                    lockerDeposit: lockerDeposit.text,
-                                    lockerFee: lockerFee.text,
-                                    libFee: libFee.text,
-                                    totalPayment: totalPayment.text)));
+                                      name: name.text,
+                                      date: date.text,
+                                      address: address.text,
+                                      mob: mobile.text,
+                                      planTime: planTime.text,
+                                      reciptNo: reciptNo.text,
+                                      refCode: refCode.text,
+                                      seatNo: seatNo.text,
+                                      regFee: regFee.text,
+                                      bookDeposit: bookDeposit.text,
+                                      lockerDeposit: lockerDeposit.text,
+                                      lockerFee: lockerFee.text,
+                                      libFee: libFee.text,
+                                      totalPayment: totalPay.toString(),
+                                    )));
                           }
                         },
                         child: const Text("Create Receipt")),

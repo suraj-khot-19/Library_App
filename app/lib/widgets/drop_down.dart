@@ -51,11 +51,14 @@ class _DropMenueState extends State<DropMenue> {
         _selected = value;
       },
       value: _selected,
+      enabled: true,
       required: false,
       hintText: "Plan & Time",
       labelText: "Plan & Time",
+      labelStyle: const TextStyle(background: null, color: Colors.black),
       items: arr,
-      // icon: const Icon(Icons.timer),
+      hintStyle: const TextStyle(color: Colors.black),
+      itemsVisibleInDropdown: 2,
     );
   }
 }

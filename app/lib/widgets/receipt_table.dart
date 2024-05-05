@@ -2,9 +2,15 @@ import 'package:app/utils/controllers.dart';
 import 'package:app/utils/receipt_text_style.dart';
 import 'package:flutter/material.dart';
 
-class ReceiptTable extends StatelessWidget {
-  const ReceiptTable({super.key});
+class ReceiptTable extends StatefulWidget {
+  final double totalPayment;
+  ReceiptTable({super.key, required this.totalPayment});
 
+  @override
+  State<ReceiptTable> createState() => _ReceiptTableState();
+}
+
+class _ReceiptTableState extends State<ReceiptTable> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -66,7 +72,8 @@ class ReceiptTable extends StatelessWidget {
               cells: <DataCell>[
                 DataCell(recriptText('Total Payment Received')),
                 DataCell(
-                  recriptText("20"),
+                  // recriptText(totalPayment.text),
+                  recriptText(widget.totalPayment.toString()),
                 ),
               ],
             ),

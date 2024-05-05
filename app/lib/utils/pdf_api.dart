@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 import 'package:app/utils/controllers.dart';
 import 'package:flutter/services.dart';
 import 'package:open_file/open_file.dart';
@@ -7,9 +8,12 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 class PdfApi {
-  static Future<File> generatePdf() async {
+  static Future<File> generatePdf(String totalPayment) async {
     final pdf = pw.Document();
-
+    // Generate a random number for the filename
+    final random = Random();
+    final randomNumber = random.nextInt(10000);
+    final filename = 'ShikshaGram$randomNumber';
     //logo
     final logo = (await rootBundle.load("assets/app.png")).buffer.asUint8List();
     //font style
@@ -25,8 +29,7 @@ class PdfApi {
       RowValues(particulars: "Locker Deposit", amount: lockerDeposit.text),
       RowValues(particulars: "Library Fee", amount: libFee.text),
       RowValues(particulars: "Locker Fee", amount: lockerFee.text),
-      RowValues(
-          particulars: "Total Payment Received", amount: totalPayment.text),
+      RowValues(particulars: "Total Payment Received", amount: totalPayment),
     ];
     final data = rows.map((e) => [e.particulars, e.amount]).toList();
     //context in pdf
@@ -203,7 +206,7 @@ class PdfApi {
       ),
     );
 
-    return saveDocument(name: 'recipt_1.pdf', pdf: pdf);
+    return saveDocument(name: filename, pdf: pdf);
   }
 
   static Future<File> saveDocument(
@@ -217,13 +220,7 @@ class PdfApi {
 
   static Future openFile(File file) async {
     final url = file.path;
-    print("Opening file: $url");
-    try {
-      await OpenFile.open(url);
-      print("File opened successfully.");
-    } catch (e) {
-      print("Error opening file: $e");
-    }
+    await OpenFile.open(url);
   }
 
   static pw.Text myTextStyle(String text, pw.Font fontStyle) {

@@ -3,13 +3,18 @@ import 'package:app/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 
 class MyTable extends StatefulWidget {
-  const MyTable({Key? key});
+  final TotalPayCallback? onTotalPayChanged;
+  const MyTable({Key? key, this.onTotalPayChanged}) : super(key: key);
 
   @override
   State<MyTable> createState() => _MyTableState();
 }
 
 class _MyTableState extends State<MyTable> {
+  double getTotalPay() {
+    return totalPay;
+  }
+
   double totalPay = 0.0;
 
   @override
@@ -123,6 +128,9 @@ class _MyTableState extends State<MyTable> {
           lockerDepositValue +
           libFeeValue +
           lockerFeeValue;
+      widget.onTotalPayChanged?.call(totalPay);
     });
   }
 }
+
+typedef TotalPayCallback = void Function(double totalPay);
