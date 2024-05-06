@@ -31,18 +31,18 @@ class _MyTableState extends State<MyTable> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
-                flex: 4,
+                flex: 5,
                 child: Text(
                   'Particulars',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ),
               Spacer(),
               Expanded(
-                flex: 5,
+                flex: 4,
                 child: Text('Amount(₹)',
                     style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               )
             ],
           ),
@@ -56,7 +56,7 @@ class _MyTableState extends State<MyTable> {
                 flex: 5,
                 child: Text(
                   'Registration Fee*',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
               const Spacer(),
@@ -77,7 +77,7 @@ class _MyTableState extends State<MyTable> {
                 flex: 5,
                 child: Text(
                   'Book Deposit',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
               const Spacer(),
@@ -98,14 +98,14 @@ class _MyTableState extends State<MyTable> {
                 flex: 5,
                 child: Text(
                   'Locker Deposit',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
               const Spacer(),
               Expanded(
                 flex: 6,
-                child: textField(
-                    lockerFee, "Locker Deposit", TextInputType.number, false),
+                child: textField(lockerDeposit, "Locker Deposit",
+                    TextInputType.number, false),
               ),
             ],
           ),
@@ -119,7 +119,7 @@ class _MyTableState extends State<MyTable> {
                 flex: 5,
                 child: Text(
                   'Library Fee',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
               const Spacer(),
@@ -140,7 +140,7 @@ class _MyTableState extends State<MyTable> {
                 flex: 5,
                 child: Text(
                   'Locker Fee',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
               const Spacer(),
@@ -155,13 +155,14 @@ class _MyTableState extends State<MyTable> {
             thickness: 1,
             color: Colors.black,
           ),
+          addVerticalSpace(5),
           Row(
             children: [
               const Expanded(
-                flex: 5,
+                flex: 6,
                 child: Text(
-                  'Total Payment Received',
-                  style: TextStyle(fontSize: 17),
+                  'Total Payment\n Received',
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
               const Spacer(),

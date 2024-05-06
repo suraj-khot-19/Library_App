@@ -13,15 +13,15 @@ class PdfApi {
     // Generate a random number for the filename
     final random = Random();
     final randomNumber = random.nextInt(10000);
-    final filename = 'ShikshaGram$randomNumber';
-    //logo
+    final filename = 'ShikshaGram$randomNumber.pdf';
+
     final logo = (await rootBundle.load("assets/app.png")).buffer.asUint8List();
-    //font style
+
     final customFont =
         pw.Font.ttf(await rootBundle.load('assets/OpenSans-Regular.ttf'));
 
     //headers for Table
-    final headers = ["Particulars", "Amount (Rs)"];
+    final headers = ["Particulars", "Amount (RS)"];
     //rows for table
     final rows = [
       RowValues(particulars: "Registration Fee", amount: regFee.text),
@@ -39,11 +39,10 @@ class PdfApi {
         pageFormat: PdfPageFormat.a4,
         build: (context) {
           return pw.Container(
-            padding: const pw.EdgeInsets.all(20),
+            padding: const pw.EdgeInsets.all(16),
             decoration: pw.BoxDecoration(
               color: PdfColors.white,
-              border: pw.Border.all(width: 2, color: PdfColors.grey),
-              borderRadius: pw.BorderRadius.circular(10),
+              border: pw.Border.all(width: 1, color: PdfColors.black),
               boxShadow: const [
                 pw.BoxShadow(
                   color: PdfColors.grey,
@@ -59,9 +58,11 @@ class PdfApi {
                 pw.Align(
                   alignment: pw.Alignment.topCenter,
                   child: pw.Image(pw.MemoryImage(logo),
-                      width: 150, height: 150, fit: pw.BoxFit.cover),
+                      width: 180, height: 180, fit: pw.BoxFit.cover),
                 ),
+                pw.SizedBox(height: 5),
                 pw.Divider(),
+                pw.SizedBox(height: 5),
                 pw.Column(
                   crossAxisAlignment: pw.CrossAxisAlignment.stretch,
                   children: [
@@ -150,53 +151,59 @@ class PdfApi {
                         myTextStyle(refCode.text, customFont),
                       ],
                     ),
+                    pw.SizedBox(height: 5),
                     pw.Divider(),
-                    pw.TableHelper.fromTextArray(
-                      headerStyle: pw.TextStyle(
-                          font: customFont, fontWeight: pw.FontWeight.bold),
-                      headerAlignment: pw.Alignment.topLeft,
-                      cellStyle: pw.TextStyle(
-                        font: customFont,
-                        color: PdfColors.black,
+                    pw.SizedBox(height: 5),
+                    pw.Padding(
+                      padding: const pw.EdgeInsets.all(12),
+                      child: pw.Center(
+                        child: pw.TableHelper.fromTextArray(
+                          headerCellDecoration:
+                              const pw.BoxDecoration(color: PdfColors.grey200),
+                          headerStyle: pw.TextStyle(
+                            font: customFont,
+                          ),
+                          headerAlignment: pw.Alignment.topLeft,
+                          cellStyle: pw.TextStyle(
+                            font: customFont,
+                          ),
+                          cellAlignment: pw.Alignment.topLeft, // Align cell
+                          border: null,
+                          headers: headers,
+                          data: data,
+                        ),
                       ),
-                      cellAlignment:
-                          pw.Alignment.topLeft, // Align cell content to center
-                      border: null,
-                      headers: headers,
-                      data: data,
                     ),
+                    pw.SizedBox(height: 5),
                     pw.Divider(),
+                    pw.SizedBox(height: 15),
                     pw.Row(
                       mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                       children: [
                         pw.Column(
                           children: [
-                            myTextStyle("Authorized Signitory", customFont),
-                            addVerticalSpace(10),
+                            pw.Container(
+                                height: 40,
+                                width: 90,
+                                decoration:
+                                    pw.BoxDecoration(border: pw.Border.all())),
+                            addVerticalSpace(12),
                             myTextStyle("Authorized Signitory", customFont),
                           ],
                         ),
                         pw.Column(
                           children: [
-                            myTextStyle("valid till", customFont),
-                            addVerticalSpace(10),
+                            pw.Container(
+                                height: 40,
+                                width: 90,
+                                decoration:
+                                    pw.BoxDecoration(border: pw.Border.all())),
+                            addVerticalSpace(12),
                             myTextStyle("valid till", customFont),
                           ],
                         ),
                       ],
                     ),
-                    addVerticalSpace(10),
-                    pw.Container(
-                        width: double.infinity,
-                        child: myTextStyle(
-                            "Note Fees once paid, Junded or adjusted for any unutilized days whatsoever. Subscription must be rewed on or before the validity period. Fee will not be transferred to other student's names either",
-                            customFont)),
-                    addVerticalSpace(3),
-                    pw.Container(
-                        width: double.infinity,
-                        child: myTextStyle(
-                            '"Will be refunded (without interest) upon return of Rey and clearance of cupboard or submission of books(if any).',
-                            customFont)),
                   ],
                 ),
               ],

@@ -90,32 +90,46 @@ class _MyHomeState extends State<MyHome> {
                       });
                     },
                   ),
-                  addVerticalSpace(10),
-                  Center(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => FinalPage(
-                                      name: name.text,
-                                      date: date.text,
-                                      address: address.text,
-                                      mob: mobile.text,
-                                      planTime: planTime.text,
-                                      reciptNo: reciptNo.text,
-                                      refCode: refCode.text,
-                                      seatNo: seatNo.text,
-                                      regFee: regFee.text,
-                                      bookDeposit: bookDeposit.text,
-                                      lockerDeposit: lockerDeposit.text,
-                                      lockerFee: lockerFee.text,
-                                      libFee: libFee.text,
-                                      totalPayment: totalPay.toString(),
-                                    )));
-                          }
-                        },
-                        child: const Text("Create Receipt")),
-                  )
+                  addVerticalSpace(40),
+                  GestureDetector(
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => FinalPage(
+                                  name: name.text,
+                                  date: date.text,
+                                  address: address.text,
+                                  mob: mobile.text,
+                                  planTime: planTime.text,
+                                  reciptNo: reciptNo.text,
+                                  refCode: refCode.text,
+                                  seatNo: seatNo.text,
+                                  regFee: regFee.text,
+                                  bookDeposit: bookDeposit.text,
+                                  lockerDeposit: lockerDeposit.text,
+                                  lockerFee: lockerFee.text,
+                                  libFee: libFee.text,
+                                  totalPayment: totalPay.toString(),
+                                )));
+                      }
+                    },
+                    child: Center(
+                      child: Container(
+                        height: 40,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.deepPurple,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: const Center(
+                          child: Text(
+                            "Create Receipt",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  addVerticalSpace(60),
                 ],
               ),
             ),

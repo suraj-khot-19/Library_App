@@ -67,15 +67,29 @@ class _FinalPageState extends State<FinalPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Info(),
-              ReceiptTable(
-                  totalPayment: totalPaymentValue), // Pass totalPayment here
-              ElevatedButton(
-                  onPressed: () async {
-                    final pdfFile =
-                        await PdfApi.generatePdf(widget.totalPayment);
-                    PdfApi.openFile(pdfFile);
-                  },
-                  child: const Text("Print Recipt"))
+              ReceiptTable(totalPayment: totalPaymentValue),
+              addVerticalSpace(40), // Pass totalPayment
+              GestureDetector(
+                onTap: () async {
+                  final pdfFile = await PdfApi.generatePdf(widget.totalPayment);
+                  PdfApi.openFile(pdfFile);
+                },
+                child: Center(
+                    child: Container(
+                  height: 40,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      color: Colors.deepPurple,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: const Center(
+                    child: Text(
+                      "Create Receipt",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                )),
+              ),
+              addVerticalSpace(60),
             ],
           ),
         ),
