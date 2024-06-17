@@ -13,7 +13,7 @@ class PdfApi {
     // Generate a random number for the filename
     final random = Random();
     final randomNumber = random.nextInt(10000);
-    final filename = 'ShikshaGram$randomNumber.pdf';
+    final filename = 'S-Library$randomNumber.pdf';
 
     final logo = (await rootBundle.load("assets/app.png")).buffer.asUint8List();
 
@@ -104,16 +104,6 @@ class PdfApi {
                               myTextStyle("Seat No:", customFont),
                               addHorizontalSpace(5),
                               myTextStyle(seatNo.text, customFont),
-                            ],
-                          ),
-                        ),
-                        addHorizontalSpace(20),
-                        pw.Expanded(
-                          child: pw.Row(
-                            children: [
-                              myTextStyle("Plan & Time:", customFont),
-                              addHorizontalSpace(5),
-                              myTextStyle(planTime.text, customFont),
                             ],
                           ),
                         ),

@@ -22,8 +22,12 @@ class Info extends StatelessWidget {
                   Expanded(flex: 0, child: receiptText("Date")),
                   addHorizontalSpace(0.1),
                   Expanded(flex: 8, child: containerForRow(date.text)),
-                  addHorizontalSpace(2),
-                  Expanded(flex: 0, child: receiptText("Receipt\n No")),
+                ],
+              ),
+              addVerticalSpace(10),
+              Row(
+                children: [
+                  Expanded(flex: 0, child: receiptText("Receipt No")),
                   addHorizontalSpace(0.1),
                   Expanded(flex: 8, child: containerForRow(reciptNo.text)),
                 ],
@@ -31,17 +35,9 @@ class Info extends StatelessWidget {
               addVerticalSpace(10),
               Row(
                 children: [
-                  Expanded(flex: 0, child: receiptText("Seat\n No")),
+                  Expanded(flex: 0, child: receiptText("Seat No")),
                   addHorizontalSpace(0.1),
                   Expanded(flex: 8, child: containerForRow(seatNo.text)),
-                  addHorizontalSpace(2),
-                  Expanded(flex: 0, child: receiptText("Plan &\n Time")),
-                  addHorizontalSpace(0.1),
-                  Expanded(
-                      flex: 8,
-                      child: containerForRow(
-                        planTime.text,
-                      )),
                 ],
               ),
             ],

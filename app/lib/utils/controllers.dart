@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 TextEditingController date = TextEditingController();
 TextEditingController seatNo = TextEditingController();
 TextEditingController reciptNo = TextEditingController();
-TextEditingController planTime = TextEditingController();
 TextEditingController name = TextEditingController();
 TextEditingController address = TextEditingController();
 TextEditingController mobile = TextEditingController();

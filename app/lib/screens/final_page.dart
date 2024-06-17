@@ -8,7 +8,6 @@ class FinalPage extends StatefulWidget {
   final String date,
       reciptNo,
       seatNo,
-      planTime,
       name,
       address,
       mob,
@@ -23,7 +22,6 @@ class FinalPage extends StatefulWidget {
       {required this.date,
       required this.reciptNo,
       required this.seatNo,
-      required this.planTime,
       required this.name,
       required this.address,
       required this.mob,
@@ -41,13 +39,25 @@ class FinalPage extends StatefulWidget {
 }
 
 class _FinalPageState extends State<FinalPage> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     final double totalPaymentValue = double.parse(widget.totalPayment);
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 230, 103, 192),
+                  Color.fromARGB(129, 46, 197, 200)
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomLeft,
+                stops: [0.4, 0.1]),
+          ),
+        ),
         title: Row(
           children: [
             Image.asset(
@@ -56,7 +66,7 @@ class _FinalPageState extends State<FinalPage> {
               height: 40,
             ),
             addHorizontalSpace(30),
-            const Text("ShikshaGram"),
+            const Text("S-Library"),
           ],
         ),
       ),
@@ -71,23 +81,57 @@ class _FinalPageState extends State<FinalPage> {
               addVerticalSpace(40), // Pass totalPayment
               GestureDetector(
                 onTap: () async {
+                  setState(() {
+                    isLoading = true;
+                  });
                   final pdfFile = await PdfApi.generatePdf(widget.totalPayment);
                   PdfApi.openFile(pdfFile);
+                  setState(() {
+                    isLoading = false;
+                  });
                 },
                 child: Center(
-                    child: Container(
-                  height: 40,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: const Center(
-                    child: Text(
-                      "Create Receipt",
-                      style: TextStyle(color: Colors.white),
+                  child: Container(
+                    height: 40,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: isLoading
+                          ? CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : Text(
+                              "Create Receipt",
+                              style: TextStyle(color: Colors.black),
+                            ),
                     ),
                   ),
-                )),
+                ),
+              ),
+              addVerticalSpace(40), // Pass totalPayment
+              GestureDetector(
+                onTap: () async {
+                  Navigator.pop(context);
+                },
+                child: Center(
+                  child: Container(
+                    height: 40,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Go Back",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
               ),
               addVerticalSpace(60),
             ],
