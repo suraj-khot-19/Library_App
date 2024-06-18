@@ -23,7 +23,6 @@ class _MyHomeState extends State<MyHome> {
 
   final _formKey = GlobalKey<FormState>();
 
-  //btn confirmation msg
   Future<void> onClickBtn() async {
     return showDialog(
       context: context,
@@ -34,7 +33,7 @@ class _MyHomeState extends State<MyHome> {
             iconColor: Colors.black,
             backgroundColor: Colors.white,
             titleTextStyle: const TextStyle(color: Colors.black, fontSize: 20),
-            icon: const Icon(Icons.code_sharp),
+            icon: const Icon(Icons.book),
             title: const Text(
               "About App",
             ),
@@ -48,20 +47,14 @@ class _MyHomeState extends State<MyHome> {
                   Navigator.of(context).pop();
                 },
                 child: const Text(
-                  "Cancel",
+                  "Ok",
                   style: TextStyle(color: Colors.black),
                 ),
               ),
               TextButton(
                 onPressed: () async {
                   const url = 'https://www.linkedin.com/in/khot-suraj';
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(url)),
-                    );
-                  }
+                  launchUrl(Uri.parse(url));
                   Navigator.of(context).pop();
                 },
                 child: const Text(
